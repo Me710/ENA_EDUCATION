@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <p> la lesson institule {{ lesson.nom }} a ete ceer par  {{ lesson.creer_par }} </p><br>
+        {% if user.is_superuser %}
+        <a href="{% url 'programme:lessonupdate' niveau=lesson.niveau.slug matiere=lesson.matiere.slug slug=lesson.slug %}"> modifier la lesson</a>
+        <a href="{% url 'programme:lessondelete' niveau=lesson.niveau.slug matiere=lesson.matiere.slug slug=lesson.slug %}"> supprimez la lesson</a>
+
+        {% endif %}
+
+        <h4>Poste votre commentaire ici bas.</h4>
+
+        <form  method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                        {{ form.as_p }}
+                        <input type="submit" name="form" value="commentez" class="btn btn-primary btn-sm">
+
+                </div>
+        </form>
+
+        {% for comment in lesson.comments.all  %}
+                <h4> {{ comment.auteur }} <small> <i> poste le {{ comment.date_added }}</i></small></h4>
+                <p>{{ comment.corps }}</p>
+                {% for reponse in comment.reponses.all  %}
+                         <h5> {{ reponse.auteur }} <small> <i> poste le {{ reponse.date_added }}</i></small></h5>
+                         <p>{{ reponse.corps }}</p>
+
+                {% endfor %}
+
+                <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+
+                        {{ form2.as_p }}
+                        <input type="submit" name="form2" value="Repondez" class="btn btn-warning btn-sm">
+
+                </form>
+        {% endfor %}
+    
+{% endblock %}

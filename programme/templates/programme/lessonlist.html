@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for lesson in matieres.lesson.all  %}
+        {% if user.is_authenticated  %}
+                <a href="{% url 'programme:lessonlistdetail' slug=lesson.slug matiere=matieres.slug niveau=matieres.niveau.slug %}">Chapitre-{{ lesson.position }} {{ lesson.nom }} </a><br>
+
+        {% else %}
+        <p> Pour suivre un cours vous devez vous connecter <a href="{% url 'login' %}"> Login</a></p>
+        {% endif %}
+    
+    {% endfor %}
+{% if user.is_superuser %}
+    <a href="{% url 'programme:lessoncreate' niveau=matieres.niveau.slug slug=matieres.slug %}">Creer une lesson </a>
+{% endif %}
+
+{% endblock %}
