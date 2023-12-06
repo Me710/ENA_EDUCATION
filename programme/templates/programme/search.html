@@ -1,0 +1,101 @@
+{% extends 'base-back.html' %}
+{% load static %} 
+{% block content %}
+
+<main>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Useful Apps /</span> Web Search</h4>
+    <div class="course__sidebar-search mb-50">
+        <form action="{% url 'programme:websearch' %}" method="GET">
+           <input type="text" placeholder="Type anything you want to search for..." name="query" id="query">
+           <button type="submit">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 584.4 584.4" style="enable-background:new 0 0 584.4 584.4;" xml:space="preserve">
+                 <g>
+                    <g>
+                       <path class="st0" d="M565.7,474.9l-61.1-61.1c-3.8-3.8-8.8-5.9-13.9-5.9c-6.3,0-12.1,3-15.9,8.3c-16.3,22.4-36,42.1-58.4,58.4    c-4.8,3.5-7.8,8.8-8.3,14.5c-0.4,5.6,1.7,11.3,5.8,15.4l61.1,61.1c12.1,12.1,28.2,18.8,45.4,18.8c17.1,0,33.3-6.7,45.4-18.8    C590.7,540.6,590.7,499.9,565.7,474.9z"/>
+                       <path class="st1" d="M254.6,509.1c140.4,0,254.5-114.2,254.5-254.5C509.1,114.2,394.9,0,254.6,0C114.2,0,0,114.2,0,254.5    C0,394.9,114.2,509.1,254.6,509.1z M254.6,76.4c98.2,0,178.1,79.9,178.1,178.1s-79.9,178.1-178.1,178.1S76.4,352.8,76.4,254.5    S156.3,76.4,254.6,76.4z"/>
+                    </g>
+                 </g>
+              </svg>
+           </button>
+        </form>
+     </div>
+     
+     {% if results %}
+     <!-- page title area start -->
+     <h1>Search results for "{{ query }}"</h1>
+     {% for result in results %}
+     <section class="page__title-area pt-120">
+        <div class="page__title-shape">
+           <img class="page-title-shape-5 d-none d-sm-block" src="assets/img/page-title/page-title-shape-1.png" alt="">
+           <img class="page-title-shape-6" src="" alt="">
+           <img class="page-title-shape-7" src="assets/img/page-title/page-title-shape-4.png" alt="">
+           <img class="page-title-shape-8" src="assets/img/page-title/page-title-shape-5.png" alt="">
+        </div>
+        <div class="container">
+        </div>
+     </section>
+     <!-- page title area end -->
+ 
+     <!-- event details area start -->
+     <section class="event__area pb-110">
+        <div class="container">
+           <div class="row">
+              <div class="col-xxl-8 col-xl-8 col-lg-8">
+                 <div class="events__wrapper">
+                    <div class="events__thumb mb-35 w-img">
+                       <img src="{{ result.image.url }}" alt="">
+                    </div>
+                    <div class="events__details mb-35">
+                       <h3><a href="{{ result.url }}">{{ result.title }}</a></h3>
+                       <p>{{ result.description }}</p>
+                       
+                    </div>
+                    <p>{{ result.body }}</p>
+                    
+                 </div>
+              </div>
+              <div class="col-xxl-4 col-xl-4 col-lg-4">
+                 <div class="events__sidebar pl-70">
+                    <div class="events__sidebar-widget white-bg mb-20">
+                       <div class="events__sidebar-shape">
+                          <img class="events-sidebar-img-2" src="assets/img/events/event-shape-2.png" alt="">
+                          <img class="events-sidebar-img-3" src="assets/img/events/event-shape-3.png" alt="">
+                       </div>
+                       <div class="events__info">
+                       </div>
+                    </div>
+                    <div class="events__sidebar-widget white-bg">
+                       <div class="events__sponsor">
+                          <h3 class="events__sponsor-title">Sponsors</h3>
+                          <div class="events__sponsor-thumb mb-35">
+                             <img src="assets/img/events/sponsor-logo.png" alt="">
+                          </div>
+                          <div class="events__sponsor-info">
+                             <h3>Thomas R. Toe</h3>
+                             <h4>Email: <span>support@educal.com</span></h4>
+                             <div class="events__social d-xl-flex align-items-center">
+                                <h4>Share:</h4>
+                                <ul>
+                                   <li><a href="#" class="fb" ><i class="social_facebook"></i></a></li>
+                                   <li><a href="#" class="tw" ><i class="social_twitter"></i></a></li>
+                                   <li><a href="#" class="pin" ><i class="social_pinterest"></i></a></li>
+                                </ul>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </section>
+     {% endfor %}
+     <!-- event details area end -->
+     {% else %}
+     <p>No results found.</p>
+     {% endif %}
+ 
+
+ </main>
+
+ {% endblock %}

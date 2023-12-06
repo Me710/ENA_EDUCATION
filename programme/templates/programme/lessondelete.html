@@ -1,12 +1,13 @@
-{% extends 'base.html' %}
 
+{% extends 'base-back.html' %}
+{% load static %}
 {% block content %}
 
 <h1>Etez vous sure de vouloir supprimer?</h1>
    <form method="POST">
        {% csrf_token %}
        <input type="submit" value="supprimer definitivement">
-       <a href="{% url 'programme:lessonlistdetail' slug=lesson.slug matiere=lesson.matiere.slug niveau=lesson.niveau.slug %}">annuler la suppimation</a>
+       <a href="{% url 'programme:lessonlistdetail' slug=lesson.slug matiere=lesson.matiere.slug categorie=lesson.categorie.slug %}">annuler la suppimation</a>
    </form>
 
 

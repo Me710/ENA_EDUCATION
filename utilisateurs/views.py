@@ -3,8 +3,12 @@ from .forms import UserForm, ProfileForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 # Create your views here.
+import sys
+
+
 
 def accueil(request):
     return render(request, 'utilisateurs/index.html')
@@ -55,11 +59,23 @@ def user_login(request):
     else:
         return render(request, 'utilisateurs/login.html') 
 
+
+def apropos(request):
+    return render(request, 'utilisateurs/apropos.html')
+
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+
+@login_required
+def myprofil(request):
+    user = request.user
+    return render(request, 'utilisateurs/myprofil.html', {'user': user})
+
+#def bibliotheques(request):
+#    return render(request, 'utilisateurs/bibliotheques.html')
 
 
 

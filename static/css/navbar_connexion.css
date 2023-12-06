@@ -1,0 +1,90 @@
+ .header__btn:hover .about-dropdown {
+         top: 100%;
+         visibility: visible;
+         opacity: 1;
+      }
+      
+
+      .about-dropdown {
+
+         position: absolute;
+         top: 120%;
+         /* left: 0; */
+         width: 200px;
+         background: #ffffff;
+         z-index: 99;
+         -webkit-transition: all 0.3s ease-out 0s;
+         -moz-transition: all 0.3s ease-out 0s;
+         -ms-transition: all 0.3s ease-out 0s;
+         -o-transition: all 0.3s ease-out 0s;
+         transition: all 0.3s ease-out 0s;
+         visibility: hidden;
+         opacity: 0;
+         -webkit-box-shadow: 0px 30px 70px 0px rgba(11, 6, 70, 0.08);
+         -moz-box-shadow: 0px 30px 70px 0px rgba(11, 6, 70, 0.08);
+         box-shadow: 0px 30px 70px 0px rgba(11, 6, 70, 0.08);
+      }
+
+      .about-dropdown li a::after {
+         position: absolute;
+         top: 50%;
+         right: 25px;
+         -webkit-transform: translateY(-50%) rotate(-90deg);
+         -moz-transform: translateY(-50%) rotate(-90deg);
+         -ms-transform: translateY(-50%) rotate(-90deg);
+         transform: translateY(-50%) rotate(-90deg);
+      }
+
+      .about-dropdown li {
+
+         display: block;
+         width: 100%;
+         margin: 0;
+      }
+
+      .about-dropdown li a {
+         padding: 10px 25px;
+         font-size: 16px;
+         position: relative;
+         z-index: 1;
+         color: #0e1133;
+         width: 100%;
+      }
+
+      .about-dropdown i {
+         color: var(--color-b-0) !important;
+      }
+
+      .about-dropdown li:hover {
+         width: 100%;
+         background: var(--color-b-0);
+         /* border-color: var(--color-b-0); */
+         color: var(--color-b-0) !important;
+      }
+
+      .about-dropdown li:hover i,
+      .about-dropdown li:hover a {
+         color: var(--color-b-0) !important;
+      }
+
+      .about-dropdown li a::before {
+         position: absolute;
+         content: "";
+         top: 0;
+         left: auto;
+         right: 0;
+         width: 0;
+         height: 100%;
+         background: var(--color-b-0) !important;
+         z-index: -1;
+      }
+
+      .about-dropdown li:not(:last-child) {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .e-btn:hover+.about-dropdown {
+         top: 100%;
+         visibility: visible;
+         opacity: 1;
+      }

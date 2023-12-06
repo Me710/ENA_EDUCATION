@@ -1,0 +1,439 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ENA EDUCATION</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css-back/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css-back/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="{% static 'plugins/fullcalendar/main.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+
+</head>
+{% if user.is_authenticated %}
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <div class="position-relative">
+                    <a href="{% url 'accueil' %}">
+                        <img src="{% static 'img/logo/3.png' %}" alt="logo">
+                     </a>
+                </div>
+                <div class="position-relative">
+                    <h3>  </h3>
+                </div>
+                        
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        
+                    </div>
+                    
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="{% url 'programme:niveaulist' %}" class="nav-item nav-link {% if request.path == '/programme/' %}active{% endif %}"><i class="fa fa-tachometer-alt me-2"></i>Tableau de bord</a>
+                    <a href="{% url 'programme:comingsoon' %}" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Cours</a>
+                    <a href="{% url 'programme:comingsoon' %}" class="nav-item nav-link {% if request.path == '/programme/' %}active{% endif %}"><i class="fa fa-keyboard me-2"></i>Messages</a>
+                    <a href="{% url 'programme:comingsoon' %}" class="nav-item nav-link {% if request.path == '/comingsoon/' %}active{% endif %}"><i class="fa fa-table me-2"></i>Formateurs</a>
+                    
+                    <div class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>AI Apps</a>
+                      <div class="dropdown-menu bg-transparent border-0">
+                          <a href="{% url 'programme:comingsoon' %}" class="dropdown-item {% if request.path == '/programme/' %}active{% endif %}">TutorAI</a>
+                          <a href="{% url 'programme:comingsoon' %}" class="dropdown-item {% if request.path == '/programme/' %}active{% endif %}">Chatgpt</a>
+                      </div>
+                  </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Useful Tools</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{% url 'search:videos' %}" class="dropdown-item {% if request.path == '/search/' %}active{% endif %}">Youtube Search</a>
+                            <a href="{% url 'programme:websearch' %}" class="dropdown-item {% if request.path == '/programme/websearch/' %}active{% endif %}">Web Search</a>
+                            <a href="{% url 'programme:calendar' %}" class="dropdown-item {% if request.path == '/programme//calendar' %}active{% endif %}">Calendar</a>
+                            <a href="{% url 'programme:translate' %}" class="dropdown-item {% if request.path == '/programme/translate/' %}active{% endif %}">Translate</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="{% url 'accueil' %}" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{% static 'img/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{% static 'img/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{% static 'img/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notification</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="{% static 'img/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">{{request.user.username}}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="{% url 'myprofil' %}" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="{% url 'logout' %}" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+           <!-- Blank Start -->
+           <div class="container-fluid pt-4 px-4">
+            <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+                    {% block content %}
+        </div>
+        </div>
+        </div>
+        <!-- Blank End -->
+
+        {% endblock %}
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </br>
+                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{ % static 'lib/chart/chart.min.js' %}"></script>
+    <script src="{ % static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{ % static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{ % static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{ % static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{ % static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{ % static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js-back/main.js' %}"></script>
+    <!-- jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- jQuery UI -->
+    <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'plugins/fullcalendar/main.js' %}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{% static 'dist/js/demo.js' %}"></script>
+    <!-- Page specific script -->
+    <script>
+    
+        $(function () {
+      
+          /* initialize the external events
+           -----------------------------------------------------------------*/
+          function ini_events(ele) {
+            ele.each(function () {
+      
+              // create an Event Object (https://fullcalendar.io/docs/event-object)
+              // it doesn't need to have a start or end
+              var eventObject = {
+                title: $.trim($(this).text()) // use the element's text as the event title
+              }
+      
+              // store the Event Object in the DOM element so we can get to it later
+              $(this).data('eventObject', eventObject)
+      
+              // make the event draggable using jQuery UI
+              $(this).draggable({
+                zIndex        : 1070,
+                revert        : true, // will cause the event to go back to its
+                revertDuration: 0  //  original position after the drag
+              })
+      
+            })
+          }
+      
+          ini_events($('#external-events div.external-event'))
+      
+          /* initialize the calendar
+           -----------------------------------------------------------------*/
+          //Date for the calendar events (dummy data)
+          var date = new Date()
+          var d    = date.getDate(),
+              m    = date.getMonth(),
+              y    = date.getFullYear()
+      
+          var Calendar = FullCalendar.Calendar;
+          var Draggable = FullCalendar.Draggable;
+      
+          var containerEl = document.getElementById('external-events');
+          var checkbox = document.getElementById('drop-remove');
+          var calendarEl = document.getElementById('calendar');
+      
+          // initialize the external events
+          // -----------------------------------------------------------------
+      
+          new Draggable(containerEl, {
+            itemSelector: '.external-event',
+            eventData: function(eventEl) {
+              return {
+                title: eventEl.innerText,
+                backgroundColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
+                borderColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
+                textColor: window.getComputedStyle( eventEl ,null).getPropertyValue('color'),
+              };
+            }
+          });
+      
+          var calendar = new Calendar(calendarEl, {
+            headerToolbar: {
+              left  : 'prev,next today',
+              center: 'title',
+              right : 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            themeSystem: 'bootstrap',
+            //Random default events
+            events: [
+              {
+                title          : 'All Day Event',
+                start          : new Date(y, m, 1),
+                backgroundColor: '#f56954', //red
+                borderColor    : '#f56954', //red
+                allDay         : true
+              },
+              {
+                title          : 'Long Event',
+                start          : new Date(y, m, d - 5),
+                end            : new Date(y, m, d - 2),
+                backgroundColor: '#f39c12', //yellow
+                borderColor    : '#f39c12' //yellow
+              },
+              {
+                title          : 'Meeting',
+                start          : new Date(y, m, d, 10, 30),
+                allDay         : false,
+                backgroundColor: '#0073b7', //Blue
+                borderColor    : '#0073b7' //Blue
+              },
+              {
+                title          : 'Lunch',
+                start          : new Date(y, m, d, 12, 0),
+                end            : new Date(y, m, d, 14, 0),
+                allDay         : false,
+                backgroundColor: '#00c0ef', //Info (aqua)
+                borderColor    : '#00c0ef' //Info (aqua)
+              },
+              {
+                title          : 'Birthday Party',
+                start          : new Date(y, m, d + 1, 19, 0),
+                end            : new Date(y, m, d + 1, 22, 30),
+                allDay         : false,
+                backgroundColor: '#00a65a', //Success (green)
+                borderColor    : '#00a65a' //Success (green)
+              },
+              {
+                title          : 'Click for Google',
+                start          : new Date(y, m, 28),
+                end            : new Date(y, m, 29),
+                url            : 'https://www.google.com/',
+                backgroundColor: '#3c8dbc', //Primary (light-blue)
+                borderColor    : '#3c8dbc' //Primary (light-blue)
+              }
+            ],
+            editable  : true,
+            droppable : true, // this allows things to be dropped onto the calendar !!!
+            drop      : function(info) {
+              // is the "remove after drop" checkbox checked?
+              if (checkbox.checked) {
+                // if so, remove the element from the "Draggable Events" list
+                info.draggedEl.parentNode.removeChild(info.draggedEl);
+              }
+            }
+          });
+      
+          calendar.render();
+          // $('#calendar').fullCalendar()
+      
+          /* ADDING EVENTS */
+          var currColor = '#3c8dbc' //Red by default
+          // Color chooser button
+          $('#color-chooser > li > a').click(function (e) {
+            e.preventDefault()
+            // Save color
+            currColor = $(this).css('color')
+            // Add color effect to button
+            $('#add-new-event').css({
+              'background-color': currColor,
+              'border-color'    : currColor
+            })
+          })
+          $('#add-new-event').click(function (e) {
+            e.preventDefault()
+            // Get value and make sure it is not null
+            var val = $('#new-event').val()
+            if (val.length == 0) {
+              return
+            }
+      
+            // Create events
+            var event = $('<div />')
+            event.css({
+              'background-color': currColor,
+              'border-color'    : currColor,
+              'color'           : '#fff'
+            }).addClass('external-event')
+            event.text(val)
+            $('#external-events').prepend(event)
+      
+            // Add draggable funtionality
+            ini_events(event)
+      
+            // Remove event from text input
+            $('#new-event').val('')
+          })
+        })
+      </script>
+</body>
+{% else %}
+ <!-- 404 Start -->
+ <div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-md-6 text-center p-4">
+            <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+            <h1 class="display-1 fw-bold">You must be authenticated</h1>
+            <h1 class="mb-4">Could not display result</h1>
+            <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website!
+                Maybe go to our home page or try to use a search?</p>
+            <a class="btn btn-primary rounded-pill py-3 px-5" href="url 'login' ">Go Back To Login</a>
+        </div>
+    </div>
+</div>
+<!-- 404 End -->
+{% endif %}
+</html>

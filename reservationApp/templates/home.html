@@ -1,0 +1,89 @@
+{% extends "base_booking.html" %} {% load humanize %} {% load customfilter %} {% block pageContent %}
+
+<!--Section: Content-->
+<section class="">
+    {% if user.id %}
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="card rounded-0 shadow border-primary text-start summary-card my-3">
+                <div class="card-body">
+                    <div class="d-flex w-100">
+                        <div class="col-8 pe-2">
+                            <div class="summary-title fs-5 border-bottom">Total Categories</div>
+                            <div class="summary-count text-end fw-bolder mt-3 px-4">{{ categories|intcomma }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="summary-icon p-3 rounded border text-center bg-gradient bg-light">
+                                <i class="fa fa-list"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="card rounded-0 shadow border-warning text-start summary-card my-3">
+                <div class="card-body">
+                    <div class="d-flex w-100">
+                        <div class="col-8 pe-2">
+                            <div class="summary-title fs-5 border-bottom">Total Buses</div>
+                            <div class="summary-count text-end fw-bolder mt-3 px-4">{{ products|intcomma }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="summary-icon p-3 rounded border text-center bg-gradient bg-light">
+                                <i class="fa fa-bus fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="card rounded-0 shadow border-success text-start summary-card my-3">
+                <div class="card-body">
+                    <div class="d-flex w-100">
+                        <div class="col-8 pe-2">
+                            <div class="summary-title fs-5 border-bottom">Total Upcoming Trip</div>
+                            <div class="summary-count text-end fw-bolder mt-3 px-4">{{ upcoming_trip|intcomma }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="summary-icon p-3 rounded border text-center bg-gradient bg-light">
+                                <i class="fa fa-file-invoice fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card card-default rounded-0 shadow border border-dark">
+        <div class="card-body">
+            <div class="container-fluid">
+                <h2 class="text-center fw-bold">Welcome to Online Bus Ticket Reservation System</h2>
+                <hr>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis nisi eleifend, fringilla velit sed, tempus neque. Mauris maximus ex tortor. Integer in orci eu tortor luctus cursus ac in dui. Cras scelerisque erat in quam ornare, eu vulputate
+                    eros ornare. Integer vulputate risus ut magna dignissim, vel ultricies eros congue. Fusce cursus mattis tortor eu tempor. Morbi lacinia lacinia sapien. Nam ultrices justo a diam feugiat commodo. Proin a eros eget lacus eleifend egestas
+                    vitae sed nisl. Mauris aliquet fringilla ex imperdiet vulputate. In quis risus id elit consectetur gravida. Phasellus hendrerit dui eget libero tempus congue.
+                    <br> Vivamus libero sem, consequat a lobortis eu, eleifend sit amet magna. Nam vestibulum enim sit amet sapien lobortis molestie. Pellentesque ut leo vel ipsum facilisis fermentum. Maecenas aliquet augue id finibus sagittis. Sed molestie
+                    lobortis risus, eu ultricies diam dignissim nec. Maecenas ac pharetra nibh, at eleifend nibh. Suspendisse scelerisque semper sem a dictum. Sed condimentum ut ipsum nec suscipit. Nam efficitur nec tortor sed volutpat. Vivamus at elementum
+                    risus, ac mollis nisl. Quisque ullamcorper purus eget metus condimentum, id viverra diam convallis. Sed tempus mi nec velit scelerisque fringilla vel at lectus. Fusce ut neque eget lacus hendrerit porttitor eu in ligula. Mauris mollis
+                    non lectus id finibus. Morbi in ultricies nisi. Fusce ut arcu aliquet, sollicitudin magna in, hendrerit mi.
+                    <br> Proin a nisi scelerisque, tempor est ac, ultricies metus. Mauris quis sapien ac nulla varius malesuada sed in mauris. Integer sapien turpis, malesuada in aliquam vitae, congue quis risus. Duis sodales quis leo ultricies venenatis.
+                    In vehicula magna sit amet mauris tempus vestibulum. Donec eu lacinia augue. Aenean eleifend sodales ante et tempor. Integer bibendum ante in nisi consectetur efficitur. Mauris non fermentum ante. Orci varius natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Aliquam nibh quam, blandit molestie erat id, bibendum efficitur sapien. Suspendisse pellentesque a neque non venenatis. Etiam quam purus, sollicitudin nec urna ornare, molestie dictum
+                    nunc. Duis vehicula hendrerit rutrum.
+                    <br> Cras semper arcu a lacus scelerisque imperdiet. Quisque ut finibus metus, id euismod sem. Donec accumsan viverra ligula, condimentum dictum nisl molestie eu. Suspendisse potenti. Nulla cursus magna in risus interdum posuere. Nunc
+                    fermentum augue nisl, eu faucibus elit suscipit vel. Vivamus ultrices sem quam, nec vehicula leo commodo sit amet. Cras dolor risus, aliquam sed tristique et, sollicitudin vitae tellus. Curabitur ac porta velit.
+                    <br> Aliquam erat volutpat. Aliquam erat volutpat. Sed velit quam, ullamcorper nec sem eget, dignissim tincidunt risus. Morbi laoreet sapien sed ipsum dignissim, at bibendum mauris iaculis. Quisque vulputate efficitur justo, at maximus
+                    nunc vulputate non. Pellentesque eleifend nibh ut sagittis faucibus. In a diam rutrum, varius ipsum eu, vestibulum ipsum.
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>
+
+
+</div> {% endblock pageContent %}

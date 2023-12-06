@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<main>
+        {% block content %}
+        
+        {% include 'utilisateurs/mission.html' %}
+        {% include 'utilisateurs/equipe.html' %}
+        <h2 id="contact"></h2>
+        {% include 'utilisateurs/contact.html' %}
+        {% endblock %}
+</main>
+
+

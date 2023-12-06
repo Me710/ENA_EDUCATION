@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'utilisateurs',
     'programme',
-
+    'search',
+    'reservationApp',
+    
     'django.contrib.sites',
     'crispy_forms',
-    'allauth',   
+    'allauth',  
+    'django.contrib.humanize',
     'allauth.account',  
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
@@ -180,5 +183,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROUTE = os.path.join(BASE_DIR,'media')
+YOUTUBE_DATA_API_KEY = 'AIzaSyCrRqGezzJUUHXyqLwSnuvLykzHEMQfd7w'
+
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nebotchristian7@gmail.com'
+EMAIL_HOST_PASSWORD = 'nebotfonkou'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'nebotchristian7@gmail.com'

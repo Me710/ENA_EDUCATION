@@ -1,0 +1,9 @@
+django
+pillow
+django-crispy-forms
+django-allauth
+isodate
+requests
+cryptography
+more_itertools==10.1.0
+humanize

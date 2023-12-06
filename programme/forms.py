@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import widgets
-from .models import Lesson, Commentaire, Reponse
+from .models import *
 
 class LessonForm(forms.ModelForm):
     class Meta():
@@ -33,4 +33,16 @@ class RepForm(forms.ModelForm):
                 'cols':10,
                 'placeholder':'Repondez a ce commentaire ici.'
             })
-        }              
+        }  
+
+
+
+class MatiereFilterForm(forms.Form):
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Categories.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+class SearchForm(forms.Form):
+    query = forms.CharField(max_length=100)

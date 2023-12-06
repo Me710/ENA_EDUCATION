@@ -1,9 +1,57 @@
-{% extends 'base.html' %}
-
+{% extends 'base-back.html' %}
+{% load static %}
 {% block content %}
-    {% for matiere in niveau.matiere.all  %}
-
-        <a href="{% url 'programme:lessonlist' slug=matiere.slug  niveau=niveau.slug %}"> {{ matiere.nom }} </a><br>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Cours /</span><span class="text-muted fw-light">{{ categorie.matiere.categorie }} /</span> Lessons</h4>
+    <div class="tab-content" id="courseTabContent">
+        <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+           <div class="row">
+            {% for matiere in categorie.matiere.all  %}
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                 <div class="course__item white-bg mb-30 fix">
+                    <div class="course__thumb w-img p-relative fix">
+                        <a href="course-details.html">
+                            <img src="{% static 'media/Matiere/10.png' '%}" alt="">
+                          </a>                          
+                       <div class="course__tag">
+                          <a href="#">{{ matiere.categorie }}</a>
+                       </div>
+                    </div>
+                    <div class="course__content">
+                       <div class="course__meta d-flex align-items-center justify-content-between">
+                          <div class="course__lesson">
+                             <span><i class="far fa-book-alt"></i>43 Lesson</span>
+                          </div>
+                          <div class="course__rating">
+                             <span><i class="icon_star"></i>4.5 (44)</span>
+                          </div>
+                       </div>
+                       <h3 class="course__title"><a href="{% url 'programme:lessonlist' slug=matiere.slug  categorie=categorie.slug %}">{{ matiere.nom }}</a></h3>
+                       <div class="course__teacher d-flex align-items-center">
+                          <div class="course__teacher-thumb mr-15">
+                             <img src="{% static 'media/Matiere/10.png' '%}" alt="">
+                          </div>
+                          <h6><a href="instructor-details.html">Jim Séchen</a></h6>
+                       </div>
+                    </div>
+                    <div class="course__more d-flex justify-content-between align-items-center">
+                       <div class="course__status">
+                          <span>Free</span>
+                       </div>
+                       <div class="course__btn">
+                          <a href="course-details.html" class="link-btn">
+                             Know Details
+                             <i class="far fa-arrow-right"></i>
+                             <i class="far fa-arrow-right"></i>
+                          </a>
+                       </div>
+                    </div>
+                 </div>
+                 
+              </div>
+              {% endfor %}
+           </div>
+        </div>
+    </div>
     
-    {% endfor %}
 {% endblock %}
+

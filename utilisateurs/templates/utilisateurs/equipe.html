@@ -1,0 +1,304 @@
+
+{% load static %}  
+ 
+<head>
+
+   <style>
+      .team__area {
+         position: relative;
+         background-repeat: no-repeat;
+         z-index: 1;
+      }
+
+      .team__area::after {
+         content: '';
+         position: absolute;
+         left: 0;
+         bottom: 260px;
+         width: 100%;
+         height: 332px;
+         background: #fff;
+         z-index: -1;
+      }
+
+      .section-padding {
+         padding: 120px 0px;
+      }
+
+      .team__area-item-image {
+         position: relative;
+      }
+
+      .team__area-item-image-icon {
+         position: absolute;
+         right: 20px;
+         bottom: -22px;
+         z-index: 1;
+      }
+
+      .team__area-item-image-icon a {
+         color: #343a40;
+         height: 45px;
+         width: 45px;
+         background: #fff;
+         line-height: 45px;
+         text-align: center;
+         border-radius: 3px;
+         display: inline-block;
+         -webkit-box-shadow: 0 0 50px #a4acb5;
+         box-shadow: 0 0 50px #a4acb5;
+         -webkit-transition: all 0.4s ease-out 0s;
+         transition: all 0.4s ease-out 0s;
+      }
+
+      .team__area-item-image-icon .team__area-item-image-social {
+         position: absolute;
+         bottom: 55px;
+         left: 0;
+         top: auto;
+      }
+
+      .team__area-item-image-icon:hover .team__area-item-image-social {
+         opacity: 1;
+         visibility: visible;
+      }
+
+      .team__area-item-image-social {
+         position: absolute;
+         left: 0px;
+         top: 32%;
+         opacity: 0;
+         visibility: hidden;
+         -webkit-transition: all 0.4s ease-out 0s;
+         transition: all 0.4s ease-out 0s;
+      }
+
+      .team__area-item-image-social ul li {
+         list-style: none;
+         margin-bottom: 10px;
+      }
+
+      .team__area-item-image-social ul li a {
+         display: block;
+         height: 45px;
+         width: 45px;
+         text-align: center;
+         line-height: 45px;
+         border-radius: 3px;
+         background: #fff;
+         color: #343a40;
+         -webkit-transition: all 0.4s ease-out 0s;
+         transition: all 0.4s ease-out 0s;
+      }
+
+      .team__area-item-image-social ul li a:hover {
+         background: #ec1113;
+      }
+
+      .team__area-item-image-social ul li a:hover i {
+         color: #fff;
+      }
+
+      .team__area-item-image-social ul li a:last-child {
+         margin: 0;
+      }
+
+      .team__area-item-image img {
+         width: 100%;
+      }
+
+      .team__area-item-content {
+         background: #fff;
+         padding: 40px;
+         -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+         box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+         -webkit-transition: all 0.4s ease-out 0s;
+         transition: all 0.4s ease-out 0s;
+         position: relative;
+      }
+
+      .team__area-item-content h4 {
+         -webkit-transition: all 0.4s ease-out 0s;
+         transition: all 0.4s ease-out 0s;
+      }
+
+      .team__area-item-content p {
+         color: #ec1113;
+         -webkit-transition: all 0.4s ease-out 0s;
+         transition: all 0.4s ease-out 0s;
+      }
+
+      .team__area-item:hover .team__area-item-content {
+         background: #343a40;
+      }
+
+      .team__area-item:hover .team__area-item-content h4 {
+         color: #fff;
+      }
+
+      .team__area-item:hover .team__area-item-content p {
+         color: #fff;
+      }
+
+      .team__area-item:hover .team__area-item-image-icon>a {
+         background: #ec1113;
+         color: #fff;
+         -webkit-box-shadow: none;
+         box-shadow: none;
+      }
+
+      .team__area-bottom {
+         margin-top: 40px;
+         text-align: center;
+      }
+
+      .team__area-bottom h3 {
+         font-size: 30px;
+         line-height: 40px;
+         margin-bottom: 20px;
+      }
+
+      .team__area-bottom ul li {
+         display: inline-block;
+         list-style: none;
+         margin-right: 20px;
+         padding-right: 20px;
+         border-right: 2px solid #ededed;
+      }
+
+      .team__area-bottom ul li a {
+         color: #ec1113;
+         font-weight: 700;
+         font-size: 14px;
+         line-height: 24px;
+      }
+
+      .team__area-bottom ul li:last-child {
+         margin: 0;
+         padding: 0;
+         border: 0;
+      }
+
+      .team__area-skill {
+         background: #f7f7f7;
+      }
+   </style>
+</head>
+<section class="about__area pt-90 pb-150">
+<div class="team__area section-padding1">
+   <div class="container">
+      <div class="row mb-55 mt-10">
+         <div class="col-xl-12">
+            <div class="team__area-title">
+               <span class="subtitle-page-two-center" id="equipe"></span>
+               <h2>Découvrez l'équipe d'excellence qui a permis que ce projet prenne vie</h2>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+ <div class="team__area section-padding1">
+   <div class="container">
+      <div class="row" >
+         <div class="col-xxl-4 offset-xxl-4">
+            <div class="section__title-wrapper mb-60 text-center">
+               <h2 class="section__title">Notre <span class="yellow-bg yellow-bg-big">équipe</span></h2>
+               <p>We found 13 events available for you.</p>
+            </div>
+         </div>
+     </div>
+      <div class="row mb-120">
+         <div class="col-xl-3 col-lg-4 col-md-6 xl-mb-30">
+            <div class="team__area-item">
+               <div class="team__area-item-image">
+                  <img src="{% static 'img/teacher/teacger-1.jpg' %}" alt="">
+                  <div class="team__area-item-image-icon">
+                     <div class="team__area-item-image-social">
+                        <ul>
+                           <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                           </li>
+                           <li><a href="#"><i class="fab fa-whatsapp"></i></a>
+                           </li>
+
+                        </ul>
+                     </div>
+                     <a href="#"> <i class="fal fa-plus"></i></a>
+                  </div>
+               </div>
+               <div class="team__area-item-content">
+                  <p>Future Ing Csc. AI</p>
+                  <h4><a href="team-details.html">Christian NEBOT</a></h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-3 col-lg-4 col-md-6 md-mb-30">
+            <div class="team__area-item">
+               <div class="team__area-item-image">
+                  <img src="{% static 'img/teacher/teacher-2.jpg' %}" alt="">
+                  <div class="team__area-item-image-icon">
+                     <div class="team__area-item-image-social">
+                        <ul>
+                           <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                           </li>
+                           <li><a href="#"><i class="fab fa-whatsapp"></i></a>
+                           </li>
+                        </ul>
+                     </div>
+                     <a href="#"> <i class="fal fa-plus"></i></a>
+                  </div>
+               </div>
+               <div class="team__area-item-content">
+                  <p>Future Ing. CSc</p>
+                  <h4><a href="#">Balla Moussa KEITA</a></h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-3 col-lg-4 col-md-6 md-mb-30">
+            <div class="team__area-item">
+               <div class="team__area-item-image">
+                  <img src="{% static 'img/teacher/teacher-3.jpg' %}" alt="">
+                  <div class="team__area-item-image-icon">
+                     <div class="team__area-item-image-social">
+                        <ul>
+                           <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                           </li>
+                           <li><a href="#"><i class="fab fa-whatsapp"></i></a>
+                           </li>
+                        </ul>
+                     </div>
+                     <a href="#"> <i class="fal fa-plus"></i></a>
+                  </div>
+               </div>
+               <div class="team__area-item-content">
+                  <p>Future Ing. CSc</p>
+                  <h4><a href="#">Miguel ONANA</a></h4>
+               </div>
+            </div>
+         </div>
+         <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="team__area-item">
+               <div class="team__area-item-image">
+                  <img src="{% static 'img/teacher/teacher-4.jpg' %}" alt="">
+                  <div class="team__area-item-image-icon">
+                     <div class="team__area-item-image-social">
+                        <ul>
+                           <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                           </li>
+                           <li><a href="#"><i class="fab fa-whatsapp"></i></a>
+                           </li>
+                        </ul>
+                     </div>
+                     <a href="#"> <i class="fal fa-plus"></i></a>
+                  </div>
+               </div>
+               <div class="team__area-item-content">
+                  <p>Future Ing. CSc</p>
+                  <h4><a href="#">Franck FONGANG</a></h4>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Team Area End -->
+</section>

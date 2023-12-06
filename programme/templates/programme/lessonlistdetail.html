@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
-
+{% extends 'base-back.html' %}
+{% load static %}
 {% block content %}
 
         <p> la lesson institule {{ lesson.nom }} a ete ceer par  {{ lesson.creer_par }} </p><br>
         {% if user.is_superuser %}
-        <a href="{% url 'programme:lessonupdate' niveau=lesson.niveau.slug matiere=lesson.matiere.slug slug=lesson.slug %}"> modifier la lesson</a>
-        <a href="{% url 'programme:lessondelete' niveau=lesson.niveau.slug matiere=lesson.matiere.slug slug=lesson.slug %}"> supprimez la lesson</a>
+        <a href="{% url 'programme:lessonupdate' categorie=lesson.categorie.slug matiere=lesson.matiere.slug slug=lesson.slug %}"> modifier la lesson</a>
+        <a href="{% url 'programme:lessondelete' categorie=lesson.categorie.slug matiere=lesson.matiere.slug slug=lesson.slug %}"> supprimez la lesson</a>
 
         {% endif %}
 
